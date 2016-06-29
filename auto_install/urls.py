@@ -1,11 +1,11 @@
 #coding=utf-8
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from pxe.views import *
 from django.views.generic.base import RedirectView
 from django.conf import settings
 admin.autodiscover()
-urlpatterns = patterns('',
+urlpatterns = [
     # Examples:
     # url(r'^$', 'auto_install.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
@@ -33,14 +33,14 @@ urlpatterns = patterns('',
     url(r'^upload/$',upload_file,name='upload'),
     url(r'^commit/$',auto_commit,name='commit'),
     url(r'^admin/', include(admin.site.urls)),
-)
+]
 
 # ks file download
-urlpatterns += patterns('',
+urlpatterns += [
     url(r'^ks/(?P<get_ks_id>\d+)',kickstart_file_url),
-)
+]
 
 # Api file download for memos
-urlpatterns += patterns('',
+urlpatterns += [
     url(r'^(?P<file_name>auto_install.sh|index.py|post.sh|autocommit.csv)',download_file,name="download"),
-)
+]

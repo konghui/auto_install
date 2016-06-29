@@ -27,7 +27,7 @@ SECRET_KEY = 'a#o7z=eg(8_zj5cwxp1!25+)_-4673t+$ian7w&xnp%6izd9=2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+#TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -71,8 +71,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pxe',
-        'USER':'root',
-        'PASSWORD':'1234',
+        'USER':'larry',
+        'PASSWORD':'000000',
         'HOST':'localhost',
         'PORT':'3306',
     }
@@ -111,6 +111,27 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), '../templates').replace('\\','/'),
-)
+#TEMPLATE_DIRS = (
+#    os.path.join(os.path.dirname(__file__), '../templates').replace('\\','/'),
+#)
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(os.path.dirname(__file__), '../templates').replace('\\','/')
+            ], 
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
